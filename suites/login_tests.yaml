@@ -1,0 +1,20 @@
+web:
+  url: https://clasign.test.osinfra.cn/index
+
+tasks:
+  - name: "正常登录流程"
+    flow:
+      - ai: 在账号输入框里输入 xxxxxxx
+      - ai: 在密码输入框里输入 xxxxxxx
+      - ai: 选择“我已阅读并同意《隐私政策》”复选框
+      - ai: 点击登录按钮
+      - aiAssert: 页面应该显示“配置CLA”按钮
+      - aiAssert: 页面上应该包含“已绑定的项目”表格
+
+  - name: "验证登录后功能"
+    flow:
+      - ai: 点击表格中最后一个项目地址
+      - aiAssert: 页面应该显示“暂无数据”
+      - ai: 点击“已完成”
+      - aiAssert: 应该显示一家企业签署信息
+

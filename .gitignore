@@ -1,0 +1,10 @@
+node_modules
+
+# Midscene.js dump files
+suites/midscene_run/dump
+suites/midscene_run/report
+suites/midscene_run/tmp
+suites/midscene_run/log
+suites/midscene_run/output
+suites/downloads
+midscene_run

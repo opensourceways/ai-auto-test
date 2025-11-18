@@ -1,0 +1,21 @@
+{
+  "name": "cla-ai-tests",
+  "version": "1.0.0",
+  "description": "CLA项目AI自动化测试",
+  "main": "index.js",
+  "scripts": {
+    "test:login": "midscene suites/login_tests.yaml --headed",
+    "test:complex-redirect": "midscene suites/complex_redirect.yaml --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@midscene/cli": "^0.27.0",
+    "@midscene/web": "^0.27.0",
+    "dotenv": "^17.2.3",
+    "midscene": "^0.1.1"
+  }
+}
+

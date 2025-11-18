@@ -1,0 +1,45 @@
+config:
+  headless: false
+  timeout: 60000
+  slowMo: 1000  # 放慢操作速度，方便观察
+  acceptDownloads: true  # 关键：允许自动下载
+  downloadPath: "./downloads"  # 指定下载目录
+
+web:
+  url: https://www.unifiedbus.com/zh
+  # viewportWidth: 1920
+  # viewportHeight: 1080
+
+tasks:
+  - name: "下载文档"
+    flow:
+      - ai: 向下滚动页面直到看到"欢迎下载灵衢文档"标题
+      - sleep: 2000
+      - ai: 在文档列表中找到第一个文档卡片，标题是"灵衢®基础规范"
+      - ai: 明确点击卡片中靠右边的"下载完整版"按钮
+      - sleep: 3000
+      # 验证是否点击了正确的按钮
+      - aiAssert: 应该出现登录相关的弹窗或提示
+
+  - name: "处理弹窗并登录"
+    flow:
+      - ai: 在弹窗中找到并点击"前往登录"按钮
+      - ai: 在登录表单的邮箱输入框中输入 xxxxxxx
+      - ai: 在密码输入框中输入 xxxxxxx
+      - ai: 点击登录按钮
+
+  - name: "精确点击下载按钮"
+    flow:
+      - ai: 向下滚动到"欢迎下载灵衢文档"区域
+      - sleep: 2000
+      - ai: 在文档列表中找到第一个文档卡片，标题是"灵衢®基础规范"
+      - ai: 明确点击卡片中靠右边的"下载完整版"按钮
+      - sleep: 3000
+      # 验证是否点击了正确的按钮
+      - aiAssert: 应该出现灵衢规范许可协议相关的弹窗或提示
+
+  - name: "同意协议并完成下载"
+    flow:
+      - ai: 在弹窗中向下滚动到底部
+      - ai: 找到并点击"我已阅读并同意"复选框
+      # - aiAssert: 提示信息包含"文档已添加至浏览器下载列表"
