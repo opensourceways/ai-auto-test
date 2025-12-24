@@ -12,7 +12,7 @@
   "type": "commonjs",
   "devDependencies": {
     "@midscene/cli": "^0.27.0",
-    "@midscene/web": "^0.27.0",
+    "@midscene/web": "^0.27.6",
     "dotenv": "^17.2.3",
     "midscene": "^0.1.1"
   }
