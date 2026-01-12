@@ -1,21 +1,25 @@
-config:
-  headless: false
-  timeout: 30000
-
 web:
   url: https://clasign.test.osinfra.cn/index
 
 tasks:
+  - name: "中英切换测试"
+    flow:
+      - ai: 点击右上角显示中文的下拉框
+      - ai: 点击展开的下拉框中“English”
+      - aiAssert: 登录表单切换为英文版
+      - ai: 再次点击右上角显示“English”的下拉框
+      - ai: 点击展开的下拉框中“中文”
+      - aiAssert: 登录表单切换为中文版
+
   - name: "正常登录流程-社区管理员登录测试"
     flow:
-      - ai: 在账号输入框里输入 xxxxxxx
-      - ai: 在密码输入框里输入 xxxxxxx
+      - ai: 在账号输入框里输入 xxxx@qq.com
+      - ai: 在密码输入框里输入 xxxx,
       - ai: 选择“我已阅读并同意《隐私政策》”复选框
       - ai: 点击登录按钮
       - sleep: 3000
       - aiAssert: 页面应该显示“配置CLA”按钮
       - aiAssert: 页面上应该包含“已绑定的项目”表格
-        
 
   - name: "正常登录流程-验证登录后功能"
     flow:
@@ -24,3 +28,7 @@ tasks:
       - aiAssert: 页面应该显示已签署的企业列表
       - ai: 点击已完成
       - aiAssert: 应该显示一家企业签署信息
+      - ai: 点击个人CLA
+      - aiAssert: 应该显示个人CLA的Url地址以及语言信息
+      - ai: 点击企业CLA
+      - aiAssert: 应该显示企业CLA的Url地址以及语言信息

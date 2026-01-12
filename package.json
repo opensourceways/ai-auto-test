@@ -4,17 +4,21 @@
   "description": "CLA项目AI自动化测试",
   "main": "index.js",
   "scripts": {
-    "test:basic": "midscene suites/basic_flows.yaml --headed"
+    "test:basic": "npx @midscene/cli suites/* --headless --continue-on-failure",
+    "test:all": "npm run test:basic",
+    "test:loop": "bash ./run-testes.sh"
   },
-  "keywords": [],
+  "keywords": ["cla", "ai", "automated-testing", "midscene"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
   "devDependencies": {
-    "@midscene/cli": "^0.27.0",
-    "@midscene/web": "^0.27.0",
-    "dotenv": "^17.2.3",
-    "midscene": "^0.1.1"
+    "@midscene/cli": "^1.0.0",
+    "@midscene/web": "^1.0.0",
+    "dotenv": "^16.3.1"
   }
 }
-

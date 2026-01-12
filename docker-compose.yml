@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  cla-ai-tests:
+    build: .
+    container_name: cla-ai-tests
+    # 挂载本地suites目录和报告目录，方便本地查看报告
+    volumes:
+      - ./suites:/app/suites
+      - ./midscene_run/report:/app/midscene_run/report
+    # 暴露端口，外部可访问报告
+    ports:
+      - "8080:8080"
+    # 可选：启动时运行循环测试（修改start.sh中的npm run test:basic为test:loop即可）
+    # command: ["./start.sh"]
+    # 可选：如果需要宿主机网络（邮件发送可能需要）
+    # network_mode: host
+    # 可选：重启策略
+    restart: on-failure
